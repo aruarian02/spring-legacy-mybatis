@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+<!-- mapper interface의 네임스페이스를 적어주자!!! --> 
+<mapper namespace="com.demo.gbook.mapper.GbookMapper">
+
+	
+	<select id="getAllGbook" resultType="com.demo.gbook.dto.GbookDTO" >
+		SELECT * FROM gbook;
+	</select>
+	
+	<select id="getById" resultType="com.demo.gbook.dto.GbookDTO" >
+		SELECT * FROM gbook
+		WHERE id = #{id};
+	</select>
+	
+	<insert id="insertGbook">
+		INSERT INTO gbook(title, content, writer, moddate) VALUES(#{gbook.title}, #{gbook.content}, #{gbook.writer}, #{gbook.modDate});
+	</insert>
+	
+	<update id="updateById">
+		UPDATE 
+			gbook
+		SET
+			title = #{gbook.title}
+			, content = #{gbook.content}
+			, writer = #{gbook.writer}
+			, moddate = #{gbook.modDate}
+		WHERE
+			gbook.id = #{id}
+	</update>
+
+	<delete id="deleteById">
+		DELETE FROM gbook
+		WHERE id = #{id}
+	</delete>
+	
+</mapper>
